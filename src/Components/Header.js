@@ -1,5 +1,5 @@
 // Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Container,
@@ -11,7 +11,7 @@ import {
   ButtonToolbar,
 } from "react-bootstrap";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 import Home from "../Pages/Home";
@@ -72,28 +72,40 @@ const Header = () => {
         <Modal.Body>Please fill in the form to register</Modal.Body>
         <Container className="mb-2">
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>User Name</Form.Label>
-              <Form.Control type="email" placeholder="Enter username" />
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label className="name">User Name</Form.Label>
+              <Form.Control
+                name="userName"
+                type="text"
+                placeholder="Enter username"
+              />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                name="userEmail"
+                type="email"
+                placeholder="Enter email"
+              />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                name="userPassword"
+                type="password"
+                placeholder="Password"
+              />
               <Form.Text className="text-muted">
                 We'll never share your password with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" id="confirm">
               Register
             </Button>
           </Form>

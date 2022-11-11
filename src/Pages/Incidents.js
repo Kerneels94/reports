@@ -1,4 +1,4 @@
-import { Form, Button, Container, FormGroup } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 const Incidents = () => (
   <>
@@ -16,7 +16,7 @@ const Incidents = () => (
         7: Report
         */}
 
-    <Container className="p-3">
+    <Container>
       <h1>Incident Report</h1>
       <h2>
         Please fill in the form below with all the relevant information for the

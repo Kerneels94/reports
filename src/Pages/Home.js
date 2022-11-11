@@ -5,7 +5,7 @@ import ObReports from "../Components/ObReports";
 const Home = () => {
   return (
     <>
-      <Container className="p-3">
+      <Container>
         <h1>Welcome to reports</h1>
         <h2>
           A online web based solution for security companies that write incident
@@ -14,10 +14,6 @@ const Home = () => {
         <Incidents />
         <ObReports />
       </Container>
-
-      <footer className="d-flex align-items-center justify-content-around bg-dark text-light">
-        <h2>Created by Inpulsa &copy;2022</h2>
-      </footer>
     </>
   );
 };
