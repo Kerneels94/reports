@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
 const Ob = () => {
-  const [item, setItem] = useState();
-  const [list, setList] = useState([]);
+  const [items, setItems] = useState([]);
+  const inputRef = useRef();
 
-  const addItem = (e) => {
-    const data = { item };
+  // Const helper function to set the state to the input field value
+  const handleSumbit = (e) => {
+    // pervent the defualt state of the form
     e.preventDefault();
-    if (data) {
-      setList((ls) => [...ls, data]);
-      item("");
+    // Get value
+    const value = inputRef.current.value;
+    // if value === '' return nothing
+    if (value === "") {
+      return;
     }
+    // Update state
+    setItems((prev) => {
+      // make a copy of the previous item
+      // return the copy of the array with the value of the input field
+      return [...prev, value];
+    });
+    // set the value of the inputRef to a empty string
+    inputRef.current.value = "";
   };
 
   return (
@@ -22,31 +33,31 @@ const Ob = () => {
           Our Ob Entry system can be used to manage entry and exiting at
           complexes, Shift change of guards etc..
         </h2>
-
-        {/* Form */}
-
-        <Form>
+        <Form onSubmit={handleSumbit} key={items}>
+          <Form.Group>
+            <Form.Label>Search: </Form.Label>
+            <Form.Control type="text" className="mb-3"></Form.Control>
+          </Form.Group>
           <Form.Group>
             <Form.Label>Entry: </Form.Label>
             <Form.Control
               type="text"
               className="mb-3"
-              value={item}
-              onChange={(e) => setItem(e.target.value)}
+              ref={inputRef}
             ></Form.Control>
           </Form.Group>
-
-          <Button className="btn-success" type="submit" onClick={addItem}>
+          <Button className="btn-success" type="submit">
             Sumbit
           </Button>
-
-          {list.map((i, index) => {
-            return (
-              <div>
-                <li key={index}>{i.item}</li>
-              </div>
-            );
-          })}
+          <Button className="btn-success" type="submit">
+            Remove
+          </Button>
+          <h2>
+            Ob:{" "}
+            {items.map((item) => {
+              return <div key={item}>{item}</div>;
+            })}
+          </h2>
         </Form>
       </Container>
     </>
