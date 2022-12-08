@@ -1,12 +1,13 @@
-# Portfolio
+# Reports
 
-The entire portfolio is built with Tailwind Css for styling
+A Web-Based application to help security companies with writing Incident reports and a Ob entry system
 
 ## Tech stack
 
 - Html
-- Tailwind Css
+- Bootstrap 5
 - Javascript
+- React
 
 ## Sections
 
@@ -18,27 +19,14 @@ The entire portfolio is built with Tailwind Css for styling
 2 Intro
 - Heading
 - Paragraph
-- Buttons
-- Photo
 
-3 Skills
+3 Incident Reports
 - Heading
 - Paragraph
-- Cards
-- languages 
-- Frameworks
+- Image
 
-4 Projects
+4 Ob Entries
 - Heading
 - paragraph
-- cards
-
-5 Footer
-- Social links
-- Copyright
-
-
-## Extra's
-- Whatsapp button
-- Dark mode
+- Image
 
