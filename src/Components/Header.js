@@ -1,5 +1,5 @@
 // Imports
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Button,
   Container,
@@ -30,6 +30,33 @@ const Header = () => {
 
   const handleCloseTwo = () => setShowTwo(false);
   const handleShowTwo = () => setShowTwo(true);
+
+  // Local storage for the login buttons
+
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const addUserNameToStorage = () => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("password", password);
+  };
+
+  // const removeUser = () => {
+  //   localStorage.removeItem("name");
+  //   localStorage.removeItem("password");
+  // };
+
+  // Local storage for registering a user
+
+  const [userName, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const loginUser = () => {
+    localStorage.setItem("userName", userName);
+    localStorage.setItem("email", email);
+    localStorage.setItem("userPassword", userPassword);
+  };
 
   return (
     <>
@@ -78,6 +105,8 @@ const Header = () => {
                 name="userName"
                 type="text"
                 placeholder="Enter username"
+                value={userName}
+                onChange={({ target }) => setUsername(target.value)}
               />
             </Form.Group>
 
@@ -87,6 +116,8 @@ const Header = () => {
                 name="userEmail"
                 type="email"
                 placeholder="Enter email"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -99,13 +130,20 @@ const Header = () => {
                 name="userPassword"
                 type="password"
                 placeholder="Password"
+                value={userPassword}
+                onChange={({ target }) => setUserPassword(target.value)}
               />
               <Form.Text className="text-muted">
                 We'll never share your password with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Button variant="primary" type="submit" id="confirm">
+            <Button
+              variant="primary"
+              type="submit"
+              id="confirm"
+              onClick={loginUser}
+            >
               Register
             </Button>
           </Form>
@@ -122,7 +160,12 @@ const Header = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address/Username</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={name}
+                onChange={({ target }) => setName(target.value)}
+              />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -130,13 +173,22 @@ const Header = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+              />
               <Form.Text className="text-muted">
                 We'll never share your password with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={addUserNameToStorage}
+            >
               Login
             </Button>
           </Form>

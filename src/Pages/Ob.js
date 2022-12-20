@@ -9,12 +9,13 @@ const Ob = () => {
   const inputRef = useRef();
 
   const filteredItems = useMemo(() => {
-    // ***Reasing for using UseMemo hook => To only compute the values when needed to help with performance and page rerender***
+    // ***Reasing for using UseMemo hook => To only compute the values when needed to help with performance and page re render***
     return items.filter((item) => {
       return item.toLowerCase().includes(query);
     });
     // ***UseMemo has to return a array with dependencies to update the state
   }, [items, query]);
+
   // **Create helper function to set the state to the input field value
   const handleSumbit = (e) => {
     // **pervent the defualt state of the form
