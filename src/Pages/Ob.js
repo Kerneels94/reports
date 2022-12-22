@@ -9,25 +9,27 @@ const Ob = () => {
   const inputRef = useRef();
 
   const filteredItems = useMemo(() => {
-    // ***Reasing for using UseMemo hook => To only compute the values when needed to help with performance and page re render***
+    // Reasing for using UseMemo hook => To only compute the values when needed to help with performance and page re render***
     return items.filter((item) => {
       return item.toLowerCase().includes(query);
     });
-    // ***UseMemo has to return a array with dependencies to update the state
+    // UseMemo has to return a array with dependencies to update the state
   }, [items, query]);
 
-  // **Create helper function to set the state to the input field value
+  // Create helper function to set the state to the input field value
   const handleSumbit = (e) => {
-    // **pervent the defualt state of the form
+    // pervent the defualt state of the form
     e.preventDefault();
-    // **Get value
+    // Get value
     const value = inputRef.current.value;
-    // **if value === '' return nothing
+    // if value === '' return nothing
     if (value === "") {
       return;
     }
-    // **Update state
+    // Update state
     setItems((prev) => {
+      // Local storage
+      localStorage.setItem("items", items);
       // make a copy of the previous item
       // return the copy of the array with the value of the input field
       return [...prev, value];
@@ -68,11 +70,11 @@ const Ob = () => {
           <Button className="btn-success m-2" type="submit">
             Remove
           </Button>
-          <h2 key={items}>
-            {/* Returna div with the value of the itme */}
+          <h2>
+            {/* Returna div with the value of the item */}
             Ob:
             {filteredItems.map((item) => {
-              return <div>{item}</div>;
+              return <div key={items}>{item}</div>;
             })}
           </h2>
         </Form>

@@ -41,11 +41,6 @@ const Header = () => {
     localStorage.setItem("password", password);
   };
 
-  // const removeUser = () => {
-  //   localStorage.removeItem("name");
-  //   localStorage.removeItem("password");
-  // };
-
   // Local storage for registering a user
 
   const [userName, setUsername] = useState("");
